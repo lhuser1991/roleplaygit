@@ -1,0 +1,14 @@
+<h2>Liste des guerriers</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="text-center">Nom</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let guerrier of guerriers">
+            <td class="text-center">{{guerrier.nom}}</td>
+        </tr>
+    </tbody>
+</table>

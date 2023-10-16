@@ -1,0 +1,19 @@
+<h2>Liste des joueurs</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="text-center">Nom</th>
+            <th class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let joueur of joueurs">
+            <td class="text-center">{{joueur.nom}}</td>
+            <td class="text-center">
+                <button (click) = "detailsJoueur(joueur.id)" class="btn btn-success">Details</button>
+                <button (click) = "updateJoueur(joueur.id)" class="btn btn-primary button">Modifier</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
