@@ -1,14 +1,38 @@
-<h2>Liste des guerriers</h2>
+<div *ngIf="!guerrierSelectionneStatus">
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th class="text-center">Nom</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let guerrier of guerriers">
-            <td class="text-center">{{guerrier.nom}}</td>
-        </tr>
-    </tbody>
-</table>
+    <h2>Liste des guerriers</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-center">Nom</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let guerrier of guerriers">
+                <tr (click)="chooseGuerrier(guerrier.id)" [ngClass]="{'hovered-row': isHovered}">
+                    <td class="text-center" (mouseenter)="isHovered = true" (mouseleave)="isHovered = false">{{guerrier.nom}}</td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+
+</div>
+
+<app-details-joueur *ngIf="guerrierSelectionneStatus && (this.guerrierSelectionne.id != 0)" [guerrierSelectionne]="guerrierSelectionne" [guerrierSelectionneStatus]="guerrierSelectionneStatus"></app-details-joueur>
+
+<!-- <div *ngIf="guerrierSelectionneStatus">
+    <h3>Informations du joueur {{guerrierSelectionne.id}}</h3>
+    <div>
+        <div>
+            <label><b>Nom : </b></label> {{guerrierSelectionne.nom}}
+        </div>
+        <div>
+            <label><b>Niveau : </b></label> {{guerrierSelectionne.niveau}}
+        </div>
+        <div>
+            <label><b>Classe : </b></label> {{guerrierSelectionne.classe.titre}}
+        </div>
+    </div>
+</div> -->
+

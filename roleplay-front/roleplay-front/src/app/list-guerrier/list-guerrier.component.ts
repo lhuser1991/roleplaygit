@@ -8,21 +8,34 @@ import { Router } from '@angular/router';
   templateUrl: './list-guerrier.component.html',
   styleUrls: ['./list-guerrier.component.css']
 })
-export class ListGuerrierComponent implements OnInit{
+export class ListGuerrierComponent implements OnInit {
 
   guerriers: Joueur[] = [];
+  guerrierSelectionneStatus: boolean = false;
+  guerrierSelectionne: Joueur = new Joueur();
+  isHovered: boolean = false;
 
-  constructor(private joueurService: JoueurService, private router: Router) {};
+  constructor(private joueurService: JoueurService, private router: Router) { };
 
   private getGuerriers() {
     this.joueurService.getAllGuerriers().subscribe(data => {
       this.guerriers = data;
+      console.log(this.guerriers);
     })
+  }
+
+  chooseGuerrier(id: number) {
+    this.guerrierSelectionneStatus = true;
+    this.joueurService.getJoueurById(id).subscribe(data1 => {
+      this.guerrierSelectionne = data1;
+      console.log(this.guerrierSelectionne);
+    });
   }
 
 
   ngOnInit(): void {
-      this.getGuerriers();
+    this.guerrierSelectionneStatus = false;
+    this.getGuerriers();
   }
 
 }
