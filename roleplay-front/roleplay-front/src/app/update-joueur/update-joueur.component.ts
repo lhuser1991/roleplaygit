@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Joueur } from '../joueur';
-import { JoueurService } from '../joueur.service';
+import { Joueur } from '../model/joueur/joueur';
+import { JoueurService } from '../services/joueur-service/joueur.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { ClasseService } from '../classe.service';
-import { Classe } from '../classe';
+import { ClasseService } from '../services/classe-service/classe.service';
+import { Classe } from '../model/classe/classe';
 
 @Component({
   selector: 'app-update-joueur',

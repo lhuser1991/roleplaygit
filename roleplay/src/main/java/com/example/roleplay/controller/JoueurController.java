@@ -36,7 +36,7 @@ public class JoueurController {
     }
 
     @GetMapping("/joueur/{id}")
-    public ResponseEntity<Joueur> getEmployeById(@PathVariable Integer id) {
+    public ResponseEntity<Joueur> getJoueurById(@PathVariable Integer id) {
         Joueur joueur = joueurRepository.findById(id).orElseThrow(() -> new RessourceNotFoundException("Le joueur n'existe pas pour l\'id : " + id));
         return ResponseEntity.ok(joueur);
     }

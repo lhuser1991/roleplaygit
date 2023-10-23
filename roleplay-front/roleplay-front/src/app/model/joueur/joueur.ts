@@ -1,4 +1,4 @@
-import { Classe } from "./classe";
+import { Classe } from "../classe/classe";
 
 export class Joueur {
     id: number = 0;
